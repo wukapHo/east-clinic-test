@@ -179,7 +179,7 @@ export default {
     font-size: 16px;
     line-height: 24px;
     color: #757f93;
-    transition: 0.3s;
+    transition: font-size 0.3s;
 
     @media (max-width: 600px) {
       font-size: 14px;
