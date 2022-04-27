@@ -15,7 +15,7 @@
     >
       <span class="search-button__text">Найти</span>
       <span class="search-button__icon">
-        <svg v-html="searchIcon"></svg>
+        <search-icon/>
       </span>
     </the-button>
   </div>
@@ -24,7 +24,7 @@
 <script>
 import TheSelect from '@/components/TheSelect.vue';
 import TheButton from '@/components/TheButton.vue';
-import searchIcon from '@/assets/svg/search.svg?inline';
+import SearchIcon from '@/assets/svg/search.svg?inline';
 
 export default {
   name: 'App',
@@ -32,6 +32,7 @@ export default {
   components: {
     TheSelect,
     TheButton,
+    SearchIcon,
   },
 
   data() {
@@ -40,7 +41,6 @@ export default {
       selectedSpec: null,
       searchString: '',
       isError: false,
-      searchIcon,
     };
   },
 
