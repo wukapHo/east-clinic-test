@@ -1,4 +1,9 @@
-# east-clinic-test
+# Test project for East Clinic
+
+## [Demo](https://east-clinic-test.netlify.app/)
+
+![App screenshot](https://github.com/wukapHo/east-clinic-test/raw/main/screenshot-1.png)
+![App screenshot](https://github.com/wukapHo/east-clinic-test/raw/main/screenshot-2.png)
 
 ## Project setup
 ```
@@ -19,6 +24,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
