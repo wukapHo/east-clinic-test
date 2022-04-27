@@ -51,16 +51,13 @@ export default {
   background: $prim-bg-color;
   border: 1px solid $prim-bg-color;
   border-radius: 10px;
-  font-weight: 600;
-  font-size: 17px;
-  line-height: 20px;
   color: $second-bg-color;
   cursor: pointer;
   z-index: 10;
   transition: 0.3s;
 
   @media (max-width: 600px) {
-    padding: 15px;
+    padding: 5px;
   }
 
   &:hover {

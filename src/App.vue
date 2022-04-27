@@ -12,13 +12,19 @@
       :selectedSpec="selectedSpec"
       :searchString="searchString"
       @error="isError = true"
-    >Найти</the-button>
+    >
+      <span class="search-button__text">Найти</span>
+      <span class="search-button__icon">
+        <svg v-html="searchIcon"></svg>
+      </span>
+    </the-button>
   </div>
 </template>
 
 <script>
 import TheSelect from '@/components/TheSelect.vue';
 import TheButton from '@/components/TheButton.vue';
+import searchIcon from '@/assets/svg/search.svg?inline';
 
 export default {
   name: 'App',
@@ -34,6 +40,7 @@ export default {
       selectedSpec: null,
       searchString: '',
       isError: false,
+      searchIcon,
     };
   },
 
@@ -63,12 +70,42 @@ export default {
   max-width: 600px;
 
   @media (max-width: 600px) {
-    padding: 10px;
+    padding: 20px 10px;
     width: 100%;
   }
 }
 
 .search-button {
   margin-left: 10px;
+
+  @media (max-width: 600px) {
+    .search-button__text {
+      display: none;
+    }
+
+    .search-button__icon {
+      display: block;
+    }
+  }
+
+  &:hover {
+    svg {
+      fill: $prim-bg-color;
+    }
+  }
+
+  &__text {
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 20px;
+  }
+
+  &__icon {
+    display: none;
+
+    svg {
+      fill: $second-bg-color;
+    }
+  }
 }
 </style>

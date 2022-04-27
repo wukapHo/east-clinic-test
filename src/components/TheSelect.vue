@@ -180,6 +180,10 @@ export default {
     line-height: 24px;
     color: #757f93;
     transition: 0.3s;
+
+    @media (max-width: 600px) {
+      font-size: 14px;
+    }
   }
 
   &__input {
