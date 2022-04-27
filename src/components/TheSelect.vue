@@ -21,7 +21,7 @@
       >
       <label class="select__placeholder" for="spec">Врач, заболевания, услуги</label>
       <button
-        v-show="isActive"
+        v-show="isActive && search"
         class="select__input-clear"
         @click.stop="clearSearch"
       ></button>
