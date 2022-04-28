@@ -39,31 +39,33 @@
 
     <p v-if="isError" class="select__error">Обязательное поле</p>
 
-    <div v-if="isActive" class="select__options">
-      <p v-for="item in config" :key="item.type" class="select__options-title">
-        {{ item.title }}
-      </p>
-
-      <p v-if="filteredClinicData.length === 0" class="select__options-error">
-        {{ this.emptyListPlaceholder }}
-      </p>
-
-      <ul ref="list" class="select__options-list">
-        <li
-          v-for="(item, i) in filteredClinicData"
-          :key="item.id"
-          tabindex="0"
-          class="select__options-item"
-          :class="{
-            'select__options-item--hovered': this.cursor === this.filteredClinicData.indexOf(item)
-          }"
-          @click="selectClinicItem(item)"
-          @mouseover="cursor = i"
-        >
+    <transition name="move">
+      <div v-if="isActive" class="select__options">
+        <p v-for="item in config" :key="item.type" class="select__options-title">
           {{ item.title }}
-        </li>
-      </ul>
-    </div>
+        </p>
+
+        <p v-if="filteredClinicData.length === 0" class="select__options-error">
+          {{ this.emptyListPlaceholder }}
+        </p>
+
+        <ul ref="list" class="select__options-list">
+          <li
+            v-for="(item, i) in filteredClinicData"
+            :key="item.id"
+            tabindex="0"
+            class="select__options-item"
+            :class="{
+              'select__options-item--hovered': this.cursor === this.filteredClinicData.indexOf(item)
+            }"
+            @click="selectClinicItem(item)"
+            @mouseover="cursor = i"
+          >
+            {{ item.title }}
+          </li>
+        </ul>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -393,5 +395,21 @@ export default {
       background: $third-bg-color;
     }
   }
+}
+
+.move-enter-active,
+.move-leave-active {
+  transition: 0.3s;
+}
+
+.move-enter-to,
+.move-leave-from {
+  opacity: 1;
+}
+
+.move-enter-from,
+.move-leave-to {
+  transform: translateY(-20px);
+  opacity: 0;
 }
 </style>
