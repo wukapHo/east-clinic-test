@@ -145,7 +145,9 @@ export default {
 
   watch: {
     isError() {
-      this.isActive = !!this.isError;
+      if (this.isError) {
+        this.toggleActivity();
+      }
     },
 
     isActive() {

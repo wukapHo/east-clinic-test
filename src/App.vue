@@ -12,7 +12,7 @@
       @input="searchString = $event"
     />
 
-    <button class="button" @click="goToURL(selectedItem, searchString)">
+    <button class="button" @click.stop="goToURL(selectedItem, searchString)">
       <span class="button__text">Найти</span>
       <span class="button__icon">
         <search-icon/>
