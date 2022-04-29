@@ -149,6 +149,30 @@
       "id": "7774",
       "url": "vrachi/gomeopat",
       "type": "spec"
+    },
+    {
+      "title": "Вакцинация",
+      "id": "0909",
+      "url": "uslugi/vakcinaciya",
+      "type": "service"
+    },
+    {
+      "title": "Анализы",
+      "id": "0910",
+      "url": "uslugi/analizi",
+      "type": "service"
+    },
+    {
+      "title": "Covid-19",
+      "id": "5687",
+      "url": "zabolevaniya/covid-19",
+      "type": "diseases"
+    },
+    {
+      "title": "ОРВИ",
+      "id": "0910",
+      "url": "zabolevaniya/orvi",
+      "type": "diseases"
     }
   ]
 }

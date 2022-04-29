@@ -41,6 +41,14 @@ export default {
           title: 'Специальность',
           type: 'spec',
         },
+        {
+          title: 'Заболевания',
+          type: 'diseases',
+        },
+        {
+          title: 'Услуги',
+          type: 'service',
+        },
       ],
       placeholder: 'Врач, заболевания, услуги',
       emptyListPlaceholder: 'Не найдено специальностей',

@@ -40,18 +40,25 @@
     <p v-if="isError" class="select__error">Обязательное поле</p>
 
     <transition name="move">
-      <div v-if="isActive" class="select__options">
-        <p v-for="item in config" :key="item.type" class="select__options-title">
-          {{ item.title }}
-        </p>
-
+      <div v-show="isActive" class="select__options">
         <p v-if="filteredClinicData.length === 0" class="select__options-error">
           {{ this.emptyListPlaceholder }}
         </p>
 
-        <ul ref="list" class="select__options-list">
+        <ul
+          v-for="configItem in config"
+          :key="configItem.type"
+          ref="list"
+          class="select__options-list"
+        >
           <li
-            v-for="(item, i) in filteredClinicData"
+            v-if="filteredClinicData.filter((elem) => elem.type === configItem.type).length"
+            class="select__options-title"
+          >
+            {{ configItem.title }}
+          </li>
+          <li
+            v-for="(item, i) in filteredClinicData.filter((elem) => elem.type === configItem.type)"
             :key="item.id"
             tabindex="0"
             class="select__options-item"
@@ -143,6 +150,16 @@ export default {
 
       return true;
     },
+
+    elementsForScroll() {
+      let itemList = [];
+
+      this.$refs.list.forEach((item) => {
+        itemList = [...itemList, ...item.getElementsByClassName('select__options-item')];
+      });
+
+      return itemList;
+    },
   },
 
   watch: {
@@ -185,7 +202,7 @@ export default {
       if (this.cursor > -1) {
         this.cursor -= 1;
         this.cursor = this.cursor < 0 ? this.filteredClinicData.length - 1 : this.cursor;
-        this.itemView(this.$refs.list.getElementsByTagName('li')[this.cursor]);
+        this.itemView(this.elementsForScroll[this.cursor]);
       }
     },
 
@@ -193,7 +210,7 @@ export default {
       if (this.cursor < this.filteredClinicData.length) {
         this.cursor += 1;
         this.cursor = this.cursor >= this.filteredClinicData.length ? 0 : this.cursor;
-        this.itemView(this.$refs.list.getElementsByTagName('li')[this.cursor]);
+        this.itemView(this.elementsForScroll[this.cursor]);
       }
     },
 
@@ -378,6 +395,7 @@ export default {
   }
 
   &__options-title {
+    padding-left: 10px;
     border-bottom: 1px solid #9cbdff;
   }
 
